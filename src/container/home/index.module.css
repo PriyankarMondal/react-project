@@ -1,0 +1,11 @@
+.background {
+    background-color: brown;
+}
+
+.button {
+    padding: 8px 16px;
+    background-color: aqua;
+    color: brown;
+    cursor: pointer;
+    width: fit-content;
+}
