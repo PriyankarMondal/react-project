@@ -13,11 +13,11 @@ const AboutUs = () => {
     setCount(count + 1)
   }, [])
 
-  console.log(details, "details")
+  console.log(data, "details")
 
   return (
     <div>AboutUs
-      <Link to={"/"} >Home</Link>
+      <Link to={"/"}>Home</Link>
       {/* <div onClick={() => navigate("/")}>home</div> */}
       <p>name: {data?.name}</p>
       <p>age: {data?.age}</p>
