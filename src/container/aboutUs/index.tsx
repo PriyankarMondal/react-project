@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams, useRoutes } from 'react-router-dom'
+import useCount from '../../hooks/useCount';
 
 const AboutUs = () => {
   const { details }: any = useParams();
   const [count, setCount] = useState(1)
+
+  
 
   let data = JSON.parse(details)
 
