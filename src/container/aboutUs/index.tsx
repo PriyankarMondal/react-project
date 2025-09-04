@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams, useRoutes } from 'react-router-dom'
 import useCount from '../../hooks/useCount';
+import { useSelector } from 'react-redux';
 
 const AboutUs = () => {
   const { details }: any = useParams();
   const [count, setCount] = useState(1)
 
-  
+  const countData = useSelector((state:any)=> state.countReducer.countNum)
 
-  let data = JSON.parse(details)
+  console.log(countData, "countData")
+
+  // let data = JSON.parse(details)
+  let data = {name: "", age: "", gender: ""}
 
   const navigate = useNavigate();
 
@@ -19,7 +23,7 @@ const AboutUs = () => {
   console.log(data, "details")
 
   return (
-    <div>AboutUs
+    <div>AboutUs&nbsp;{countData}&nbsp;
       <Link to={"/"}>Home</Link>
       {/* <div onClick={() => navigate("/")}>home</div> */}
       <p>name: {data?.name}</p>

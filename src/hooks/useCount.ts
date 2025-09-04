@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const useCount = () => {
-  const [data, setData] = useState(120)
+  const [data, setData] = useState(20)
 
   const InCrement = (num: number) => {
     setData((pre) => pre + num)

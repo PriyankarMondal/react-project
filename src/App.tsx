@@ -5,6 +5,7 @@ import './App.css'
 import Home from "./container/home"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AboutUs from './container/aboutUs'
+import ContactUs from './container/contactUs'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -36,13 +37,14 @@ function App() {
     }
   ]
   
-
+  
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home homeData={homeData} />} />
           <Route path="/about-us/:details" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
       </BrowserRouter>
     </>

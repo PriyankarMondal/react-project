@@ -4,8 +4,12 @@ import en from "../../utils/en.json"
 import hn from "../../utils/hn.json"
 import { Link } from 'react-router-dom';
 import useCount from '../../hooks/useCount';
+import { useDispatch } from 'react-redux';
+import { CountNum } from '../../redux/CountReducer';
 
 const Home = (props: any) => {
+
+    const dispatch = useDispatch();
 
     const { data, InCrement, DiCrement } = useCount();
 
@@ -42,6 +46,10 @@ const Home = (props: any) => {
     //     )
     // }
 
+    useEffect(() => {
+        dispatch(CountNum(data))
+    }, [data])
+
     return (
         <div>
             {/* <div className={style?.button} onClick={() => lanChange({ text: "hii" })}>Change</div>
@@ -59,7 +67,7 @@ const Home = (props: any) => {
                 :
                 null} */}
             <div
-                onClick={() => InCrement(10)}
+                onClick={() => InCrement(20)}
                 style={{
                     border: "5px solid #fff",
                     width: "10rem",
@@ -70,7 +78,7 @@ const Home = (props: any) => {
                 }}
             >+</div>
             {data}
-            <div onClick={() => DiCrement(10)}
+            <div onClick={() => DiCrement(20)}
                 style={{
                     border: "5px solid #fff",
                     width: "10rem",
@@ -79,6 +87,10 @@ const Home = (props: any) => {
                     justifyContent: "center",
                     alignItems: "center"
                 }}>-</div>
+
+            <Link to={`/about-us/jdhfbnfd`}>
+                about us
+            </Link>
 
 
             {/* <div className={style.card_main_root}>
