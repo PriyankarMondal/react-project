@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, Form } from 'react-bootstrap';
 
 const ContactUs = () => {
 
@@ -7,12 +8,16 @@ const ContactUs = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         let valid = true;
+        let name = ""
+        let age = ""
+        let email = ""
+        let message = ""
 
-        const formData = new FormData(event.currentTarget);
-        const name = formData.get('name');
-        const age = formData.get('age');
-        const email = formData.get('email');
-        const message = formData.get('message');
+        const formData: any = new FormData(event.currentTarget);
+        name = formData.get('name');
+        age = formData.get('age');
+        email = formData.get('email');
+        message = formData.get('message');
 
         if (name === "") {
             setFormErrors(prev => ({ ...prev, name: "Name is required" }))
@@ -52,39 +57,27 @@ const ContactUs = () => {
     };
 
     return (
-        <div>
-            <h1>Contact Us</h1>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", width: "300px", gap: "10px" }}>
-                <div>
-                    <label>
-                        Name:
-                        <input type="text" name="name" />
-                        {formErrors.name && <span style={{ color: "red" }}>{formErrors.name}</span>}
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Age:
-                        <input type="number" name="age" />
-                        {formErrors.age && <span style={{ color: "red" }}>{formErrors.age}</span>}
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Email:
-                        <input type="email" name="email" />
-                        {formErrors.email && <span style={{ color: "red" }}>{formErrors.email}</span>}
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Message:
-                        <textarea name="message" />
-                        {formErrors.message && <span style={{ color: "red" }}>{formErrors.message}</span>}
-                    </label>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+        <div className='d-flex flex-column align-items-center justify-content-center'>
+            <h1 className='pb-5'>Contact Us</h1>
+            <Form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", width: "300px", gap: "10px" }}>
+                <Form.Group>
+                    <Form.Control type="text" name='name' placeholder="Name" />
+                    {formErrors.name && <span style={{ color: "red" }}>{formErrors.name}</span>}
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control type="text" name='age' placeholder="Age" />
+                    {formErrors.age && <span style={{ color: "red" }}>{formErrors.age}</span>}
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control type="email" name='email' placeholder="Email" />
+                    {formErrors.email && <span style={{ color: "red" }}>{formErrors.email}</span>}
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control as={"textarea"} name='message' placeholder="Message" />
+                    {formErrors.message && <span style={{ color: "red" }}>{formErrors.message}</span>}
+                </Form.Group>
+                <Button variant="primary" type="submit">Submit</Button>
+            </Form>
         </div>
     )
 }
